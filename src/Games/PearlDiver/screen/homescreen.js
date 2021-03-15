@@ -36,7 +36,7 @@ class DSHome extends Component {
           source={require('../src/bgfinall.gif')}
           style={styles.backgroundImage}>
           {/* Back/Quit Button */}
-          {/* Test comment */}
+
           <TouchableOpacity
             onPress={() => navigation.navigate('HomeScreen')}
             style={styles.button_back}>
@@ -103,15 +103,14 @@ const styles = StyleSheet.create({
   },
 
   button_back: {
-    height: hp('4%'),
-    width: wp('8%'),
+    height: hp('8%'),
+    width: hp('9%'),
+    resizeMode: 'contain',
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 10,
-    marginLeft: 10,
   },
 
-  icon_back: {width: wp('50%'), resizeMode: 'contain'},
+  icon_back: {width: wp('12%'), resizeMode: 'contain'},
 
   container_playbutton: {
     justifyContent: 'center',
