@@ -31,7 +31,6 @@ class DSHome extends Component {
     const navigation = this.props.navigation;
 
     return (
-      // Test
       <View style={styles.container}>
         <ImageBackground
           source={require('../src/bgfinall.gif')}
