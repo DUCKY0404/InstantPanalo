@@ -36,6 +36,7 @@ class DSHome extends Component {
           source={require('../src/bgfinall.gif')}
           style={styles.backgroundImage}>
           {/* Back/Quit Button */}
+          {/* Test comment */}
           <TouchableOpacity
             onPress={() => navigation.navigate('HomeScreen')}
             style={styles.button_back}>
