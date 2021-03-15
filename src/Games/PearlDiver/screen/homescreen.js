@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
 
   button_back: {
     height: hp('4%'),
-    width: wp('10%'),
+    width: wp('8%'),
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 10,
