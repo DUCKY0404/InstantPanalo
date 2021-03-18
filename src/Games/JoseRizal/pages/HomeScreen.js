@@ -37,6 +37,8 @@ class DSHome extends Component{
       <ImageBackground style={styles.background} resizeMode="cover" source={require('./images/bplain.jpg')}>
        
        {/* quitbutton ni rizal */}
+
+       {/* Testing */}
        <TouchableOpacity
             onPress={() => navigate('HomeScreen')}
             style={styles.button_back}>
