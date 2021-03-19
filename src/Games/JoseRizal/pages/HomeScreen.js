@@ -38,7 +38,7 @@ class DSHome extends Component {
         source={require('./images/bplain.jpg')}>
         {/* quitbutton ni rizal */}
 
-        {/* deputa */}
+        {/* sample comment */}
         <TouchableOpacity
           onPress={() => navigate('HomeScreen')}
           style={styles.button_back}>
