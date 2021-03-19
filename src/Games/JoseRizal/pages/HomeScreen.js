@@ -40,6 +40,7 @@ class DSHome extends Component {
 
         {/* Testing */}
         {/* umpog mo ulo mo */}
+        {/* titi mo maliit */}
         <TouchableOpacity
           onPress={() => navigate('HomeScreen')}
           style={styles.button_back}>
