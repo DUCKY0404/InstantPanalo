@@ -36,9 +36,9 @@ class DSHome extends Component {
         style={styles.background}
         resizeMode="cover"
         source={require('./images/bplain.jpg')}>
-        {/* quitbutton ni rizal */}
 
-        {/* sample ni nash */}
+        {/* quitbutton ni rizal */}
+        
         <TouchableOpacity
           onPress={() => navigate('HomeScreen')}
           style={styles.button_back}>
@@ -50,7 +50,7 @@ class DSHome extends Component {
 
         <Image
           style={styles.logo}
-          source={require('./images/logo1.png')}></Image>
+          source={require('./images/Rizal_Logo.gif')}></Image>
 
         <View style={styles.boxescolumn}>
           <TouchableOpacity onPress={() => navigate('JRGameScreen')}>

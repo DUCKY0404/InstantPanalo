@@ -1,6 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, ImageBackground, TouchableOpacity, Image } from 'react-native';
-import { Directions } from 'react-native-gesture-handler';
+import { StyleSheet, Text, View, Button, ImageBackground, TouchableOpacity, Image} from 'react-native';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 export default class JRInstructionScreen extends React.Component {
@@ -12,11 +11,14 @@ export default class JRInstructionScreen extends React.Component {
         
         <View>
 
-         {/* return ni rizal  di ko knows bat di gumagana ung button*/}
+         {/* return ni rizal  di ko knows bat di gumagana ung button
+         
+         trny ko icall as DSHome pero ayaw pa din
+         */}
        
         <View style = {styles.bottomSpace}>
 
-          <TouchableOpacity onPress={() =>navigation.navigate('JRHomeScreen')}>
+          <TouchableOpacity onPress={() => navigation.navigate('JRHomeScreen')}>
             <Image source={require('./images/return.png')} style={styles.exitButton}></Image>
             </TouchableOpacity>
         </View>
