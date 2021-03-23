@@ -6,17 +6,12 @@ export class DSHowToPlay extends Component {
     render() {
         const navigation = this.props.navigation;
         return (
-            <ImageBackground source = {require("../images/bgplay.png")} blurRadius={2} style = {styles.backgroundImage}>
+            <ImageBackground source = {require("../images/bgplay.png")} style = {styles.backgroundImage}>
             <View style = {styles.container}>
                 <Modal transparent = {true}>
                     <View style = {styles.container}>
                     <View style = {styles.modalBgContainer}>
                         <ImageBackground source = {require("../images/bgmodal2.png")} style = {styles.modalBackgroundImage}>
-                        <View >
-                            <TouchableOpacity onPress={() => navigation.navigate('DSHome')} style={styles.exitBorder}>
-                                <Text style = {[styles.stepStyle, styles.exitStyle]}>x</Text>
-                            </TouchableOpacity>
-                        </View>
                             <View style = {styles.modalInside}>
                                 <View style = {styles.stepSpace}>
                                     <View style = {styles.step}>
@@ -32,11 +27,14 @@ export class DSHowToPlay extends Component {
                                     <View style = {styles.step}>
                                         <Text style = {styles.stepStyle}>4) Play Again! </Text>
                                     </View>
-                                    <View style = {styles.step}>
-                                        <Text style = {styles.stepStyle2}>   Enjoy the Game! </Text>
-                                    </View>
                                 </View>
-                               
+                                
+
+                                <View style = {styles.modalExitSpace}>
+                                    <TouchableOpacity onPress={() => navigation.navigate('DSHome')} style={styles.exitBorder}>
+                                        <Text style = {[styles.stepStyle, styles.exitStyle]}>x</Text>
+                                    </TouchableOpacity>
+                                </View>
                             </View>
                         </ImageBackground>
                     </View>
@@ -63,23 +61,19 @@ const styles = StyleSheet.create({
     modalBackgroundImage: {
         flex: 1,
         resizeMode: 'contain',
-        height:hp('75%')
     },
     modalBgContainer: {
         flex: 1,
-        margin: wp('5%'),
-        marginTop:'20%'
+        margin: wp('10%'),
     },
     modalInside: {
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        padding: hp('0%'),
-        marginTop: hp('-30%'),
-    
+        padding: hp('5%'),
     },
     stepSpace: {
-        flex: 0.5,
+        flex: 1,
         alignItems: 'flex-start',
         justifyContent: 'space-evenly',
         marginTop: hp('20%'),
@@ -89,15 +83,11 @@ const styles = StyleSheet.create({
     },
     stepStyle: {
         fontSize: hp('4%'),
+        fontFamily: 'Bombardment',
+        textShadowColor: 'rgb(191,104,80)',
+        textShadowOffset: {width: hp('-0.3%'), height: hp('0.4%')},
         textShadowRadius:hp('0.2%'),
-        color: '#7E53AF',
-    },
-    stepStyle2: {
-        fontSize: hp('4%'),
-        textShadowRadius:hp('0.2%'),
-        fontWeight: "bold",
-        color: '#7E53AF',
-
+        color: '#f0a66e',
     },
     stepOneStyle: {
         color: '#fbb11b',
@@ -114,7 +104,6 @@ const styles = StyleSheet.create({
     exitBorder: {
         justifyContent: 'center',
         alignItems: 'center',
-        marginLeft: 280,
         height: hp('8%'),
         width: wp('13%'),
         backgroundColor: '#58467f',
@@ -123,9 +112,7 @@ const styles = StyleSheet.create({
         borderRadius: hp('100%'),
     },
     exitStyle: {
-        marginTop:'-10%',
-        fontSize: hp('5%'),
-        fontWeight:'bold',
+        fontSize: hp('6%'),
         color: '#ffc90e'
     },
 });

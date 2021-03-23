@@ -6,11 +6,26 @@ import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-nativ
 export default class JRInstructionScreen extends React.Component {
   render() {
     const { navigate } = this.props.navigation;
-    return (
-
+    return ( 
+      
       <ImageBackground style={styles.background} source={require('./images/bplain.jpg')}>
+        
         <View>
-            <ImageBackground style={styles.logo} source={require('./images/how2.png')}></ImageBackground>
+
+         {/* return ni rizal  di ko knows bat di gumagana ung button*/}
+       
+        <View style = {styles.bottomSpace}>
+
+          <TouchableOpacity onPress={() =>navigation.navigate('JRHomeScreen')}>
+            <Image source={require('./images/return.png')} style={styles.exitButton}></Image>
+            </TouchableOpacity>
+        </View>
+
+        
+
+
+            <ImageBackground style={styles.logo} source={require('./images/how2.png')}>
+            </ImageBackground>
             <Text style={styles.headerText}> 1. Press any book and locate feather </Text>
             <Text style={styles.headerText2}> 2. Win Prizes: </Text>
             <View style={styles.imageRow} >
@@ -53,11 +68,7 @@ export default class JRInstructionScreen extends React.Component {
             </View>
             
           </View>
-        <View style = {styles.bottomSpace}>
-          <TouchableOpacity onPress={() =>navigate('JRHomeScreen')}>
-            <Image source={require('./images/return.png')} style={styles.exitButton}></Image>
-            </TouchableOpacity>
-        </View>
+        
      
         
      
@@ -109,14 +120,13 @@ const styles = StyleSheet.create({
   },   
   bottomSpace: {
     flex: 1,
-    alignItems: 'center',
+    alignItems: 'flex-end',
     justifyContent: 'center',
-    marginTop: hp('13%'),
+    marginTop: hp('1%'),
   },
     exitButton: {
       width: wp('40%'),
       height: hp('10%'),
-      alignSelf: 'center',
       resizeMode: 'contain',
     },
     
