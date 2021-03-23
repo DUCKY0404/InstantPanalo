@@ -8,7 +8,21 @@ import {
   Animated,
 } from 'react-native';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
-import Logo from '../images/dragonlogo.png';
+import Logo from '../images/dragonGIF1.gif';
+import Sound from 'react-native-sound';
+import dsls from '../audio/dsls.mp3';
+Sound.setCategory('Playback');
+
+var bgsound = new Sound(dsls, Sound.MAIN_BUNDLE, (error) => {
+  if (error) {
+    console.log('failed to load the sound', error);
+    return;
+  }
+  console.log('duration in seconds: ' + bgsound.getDuration() + 'number of channels: ' + bgsound.getNumberOfChannels());
+});
+bgsound.setNumberOfLoops(-1);
+bgsound.release();   
+
 
 class DSLoadingScene extends Component {
   state = {
@@ -16,6 +30,9 @@ class DSLoadingScene extends Component {
     LogoText: new Animated.Value(0),
   };
 
+
+
+  
   componentDidMount() {
     const {LogoAnimate, LogoText} = this.state;
     const navigation = this.props.navigation;
@@ -34,12 +51,21 @@ class DSLoadingScene extends Component {
         useNativeDriver: true,
       }),
     ]).start(() => {
-      setTimeout(() => navigation.navigate('DSHome'), 500);
+      setTimeout(() => navigation.navigate('DSHome'), 8000);
     });
   }
 
   render() {
-    
+
+    bgsound.setVolume(50);
+ 
+    bgsound.play((success) => {
+      if (success) {
+        console.log('successfully finished playing');
+      } else {
+        console.log('playback failed due to audio decoding errors');
+      }
+    });
     return (
       <ImageBackground source={require("../images/bgload.png")} style={styles.backgroundImage}>
       <View style={styles.container}>
@@ -51,10 +77,11 @@ class DSLoadingScene extends Component {
               outputRange: [80, 0],
             }),
           }}>
-          <Image style={styles.dragonlogo} source={Logo} />
+          <Image style={styles.dragonlogo} source={require("../images/DS_NewLoading.gif")} />
         </Animated.View>
         <Animated.View style={{opacity: this.state.LogoText}}>
           <Text style={styles.logoText}> Loading . . . </Text>
+          
         </Animated.View>
       </View>
       </ImageBackground>
@@ -75,15 +102,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   dragonlogo: {
-    height: hp('18%'),
-    width: hp('18%'),
+    marginTop:hp('-20%'),
+    height: hp('100%'),
+    width: hp('200%'),
     resizeMode: 'contain',
   },
   logoText: {
     color: 'white',
-    fontSize: hp('5%'),
+    fontSize: hp('3%'),
     fontFamily: 'TitanOne-Regular',
-    marginTop: hp('2%'),
-    fontWeight: '300',
+    marginTop: hp('-10%'),
+    fontWeight: '200',
   },
 });
