@@ -48,21 +48,25 @@ class DSHome extends Component {
           />
         </TouchableOpacity>
 
+ 
+
         <Image
           style={styles.logo}
           source={require('./images/Rizal_Logo.gif')}></Image>
 
+{/* play ni rizal */}
         <View style={styles.boxescolumn}>
           <TouchableOpacity onPress={() => navigate('JRGameScreen')}>
             <Image
               style={styles.playButton}
-              source={require('./images/play.png')}></Image>
+              source={require('./images/playrzl.png')}></Image>
           </TouchableOpacity>
 
+{/* how to ni rizal */}
           <TouchableOpacity onPress={() => navigate('JRInstructionScreen')}>
             <Image
               style={styles.howButton}
-              source={require('./images/how.png')}></Image>
+              source={require('./images/how2play.png')}></Image>
           </TouchableOpacity>
         </View>
       </ImageBackground>
@@ -102,7 +106,7 @@ const styles = StyleSheet.create({
   },
 
   playButton: {
-    width: wp('50%'),
+    width: wp('60%'),
     height: hp('15%'),
     marginLeft: hp('0.1%'),
     resizeMode: 'contain',
