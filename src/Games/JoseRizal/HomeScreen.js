@@ -14,7 +14,7 @@ import {
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 
-class DSHome extends Component {
+class JRHomeScreen extends Component {
   componentDidMount() {
     BackHandler.addEventListener('hardwareBackPress', this.onBackPress);
   }
@@ -35,7 +35,7 @@ class DSHome extends Component {
       <ImageBackground
         style={styles.background}
         resizeMode="cover"
-        source={require('./images/bplain.jpg')}>
+        source={require('./assets/bplain.jpg')}>
         {/* quitbutton ni rizal */}
 
         {/* sample ni nash */}
@@ -43,26 +43,26 @@ class DSHome extends Component {
           onPress={() => navigate('HomeScreen')}
           style={styles.button_back}>
           <Image
-            source={require('./images/backbuttonTEST.png')}
+            source={require('./assets/backbuttonTEST.png')}
             style={styles.logoback}
           />
         </TouchableOpacity>
 
         <Image
           style={styles.logo}
-          source={require('./images/logo1.png')}></Image>
+          source={require('./assets/logo1.png')}></Image>
 
         <View style={styles.boxescolumn}>
           <TouchableOpacity onPress={() => navigate('JRGameScreen')}>
             <Image
               style={styles.playButton}
-              source={require('./images/play.png')}></Image>
+              source={require('./assets/play.png')}></Image>
           </TouchableOpacity>
 
           <TouchableOpacity onPress={() => navigate('JRInstructionScreen')}>
             <Image
               style={styles.howButton}
-              source={require('./images/how.png')}></Image>
+              source={require('./assets/how.png')}></Image>
           </TouchableOpacity>
         </View>
       </ImageBackground>
@@ -70,7 +70,7 @@ class DSHome extends Component {
   }
 }
 
-export default DSHome;
+export default JRHomeScreen;
 
 const styles = StyleSheet.create({
   background: {
