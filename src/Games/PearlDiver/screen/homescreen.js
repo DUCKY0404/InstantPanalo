@@ -14,7 +14,7 @@ import {
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 
-class PDHomeScreen extends Component {
+class DSHome extends Component {
   componentDidMount() {
     BackHandler.addEventListener('hardwareBackPress', this.onBackPress);
   }
@@ -83,7 +83,7 @@ class PDHomeScreen extends Component {
     );
   }
 }
-export default PDHomeScreen;
+export default DSHome;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -102,6 +102,7 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
   },
 
+  //Test message
   button_back: {
     height: hp('8%'),
     width: hp('9%'),
