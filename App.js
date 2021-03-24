@@ -19,15 +19,15 @@ import How from './src/Games/Karera/screens/How';
 import PDHomeScreen from './src/Games/PearlDiver/screen/homescreen';
 import PDHowToPlay from './src/Games/PearlDiver/screen/howtoplay';
 import PDGamex from './src/Games/PearlDiver/screen/play';
+import PDLoadingScreen from './src/Games/PearlDiver/screen/PDLoadingScreen';
 
 import UFHomeScreen from './src/Games/UlamFinder/pages/HomeScreen';
 import UFGameScreen from './src/Games/UlamFinder/pages/GameScreen';
 import UFInstructionScreen from './src/Games/UlamFinder/pages/Instruction';
 
-import JRHomeScreen from './src/Games/JoseRizal/pages/HomeScreen';
-import JRGameScreen from './src/Games/JoseRizal/pages/GameScreen';
-import JRInstructionScreen from './src/Games/JoseRizal/pages/Instruction';
-import PDLoadingScreen from './src/Games/PearlDiver/screen/PDLoadingScreen';
+import JRHomeScreen from './src/Games/JoseRizal/HomeScreen';
+import JRGameScreen from './src/Games/JoseRizal/GameScreen';
+import JRInstructionScreen from './src/Games/JoseRizal/Instruction';
 
 const Stack = createStackNavigator();
 
@@ -36,46 +36,52 @@ class App extends Component {
     Orientation.lockToPortrait();
     return (
       <NavigationContainer>
-        <Stack.Navigator screenOptions={{headerShown: false, animationEnabled: false}} initialRouteName="StartScreen">
-          <Stack.Screen name = "StartScreen" component = {StartScreen}/>
-          <Stack.Screen name = "HomeScreen" component = {HomeScreen}/>
+        <Stack.Navigator
+          screenOptions={{headerShown: false, animationEnabled: false}}
+          initialRouteName="StartScreen">
+          <Stack.Screen name="StartScreen" component={StartScreen} />
+          <Stack.Screen name="HomeScreen" component={HomeScreen} />
 
           {/* DRAGON SLAYER ROUTER*/}
 
-          <Stack.Screen name = "DSLoadingScene" component = {DSLoadingScene}/>
-          <Stack.Screen name = "DSHome" component = {DSHome}/>
-          <Stack.Screen name = "DSPlayGame" component = {DSPlayGame}/>
-          <Stack.Screen name = "DSHowToPlay" component = {DSHowToPlay}/>
+          <Stack.Screen name="DSLoadingScene" component={DSLoadingScene} />
+          <Stack.Screen name="DSHome" component={DSHome} />
+          <Stack.Screen name="DSPlayGame" component={DSPlayGame} />
+          <Stack.Screen name="DSHowToPlay" component={DSHowToPlay} />
 
           {/* KARERA ROUTER*/}
 
-          <Stack.Screen name = "MainScreen" component = {MainScreen}/>
-          <Stack.Screen name = "Game" component = {Game}/>
-          <Stack.Screen name = "choose" component = {choose}/>
-          <Stack.Screen name = "How" component = {How}/>
+          <Stack.Screen name="MainScreen" component={MainScreen} />
+          <Stack.Screen name="Game" component={Game} />
+          <Stack.Screen name="choose" component={choose} />
+          <Stack.Screen name="How" component={How} />
 
           {/* PEARL DIVER ROUTER*/}
 
-          <Stack.Screen name = "PDLoadingScreen" component = {PDLoadingScreen}/>
-          <Stack.Screen name = "PDHomeScreen" component = {PDHomeScreen}/>
-          <Stack.Screen name = "PDHowToPlay" component = {PDHowToPlay}/>
-          <Stack.Screen name = "PDGamex" component = {PDGamex}/>
+          <Stack.Screen name="PDLoadingScreen" component={PDLoadingScreen} />
+          <Stack.Screen name="PDHomeScreen" component={PDHomeScreen} />
+          <Stack.Screen name="PDHowToPlay" component={PDHowToPlay} />
+          <Stack.Screen name="PDGamex" component={PDGamex} />
 
           {/* ULAM FINDER ROUTER*/}
 
-          <Stack.Screen name = "UFHomeScreen" component = {UFHomeScreen}/>
-          <Stack.Screen name = "UFGameScreen" component = {UFGameScreen}/>
-          <Stack.Screen name = "UFInstructionScreen" component = {UFInstructionScreen}/>
+          <Stack.Screen name="UFHomeScreen" component={UFHomeScreen} />
+          <Stack.Screen name="UFGameScreen" component={UFGameScreen} />
+          <Stack.Screen
+            name="UFInstructionScreen"
+            component={UFInstructionScreen}
+          />
 
           {/* JOSE RIZAL ROUTER*/}
 
-          <Stack.Screen name = "JRHomeScreen" component = {JRHomeScreen}/>
-          <Stack.Screen name = "JRGameScreen" component = {JRGameScreen}/>
-          <Stack.Screen name = "JRInstructionScreen" component = {JRInstructionScreen}/>
-
+          <Stack.Screen name="JRHomeScreen" component={JRHomeScreen} />
+          <Stack.Screen name="JRGameScreen" component={JRGameScreen} />
+          <Stack.Screen
+            name="JRInstructionScreen"
+            component={JRInstructionScreen}
+          />
         </Stack.Navigator>
       </NavigationContainer>
-      
     );
   }
 }
