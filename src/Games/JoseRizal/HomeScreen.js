@@ -50,7 +50,7 @@ class JRHomeScreen extends Component {
 
         <Image
           style={styles.logo}
-          source={require('./assets/logo1.png')}></Image>
+          source={require('./assets/Rizal_Logo.gif')}></Image>
 
         <View style={styles.boxescolumn}>
           <TouchableOpacity onPress={() => navigate('JRGameScreen')}>
