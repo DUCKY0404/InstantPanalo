@@ -14,6 +14,48 @@ import {
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 
+import Sound from 'react-native-sound';
+import { isWhiteSpaceLike } from 'typescript'; 
+import cello from './assets/sounds/cello.mp3';
+import cello2 from './assets/sounds/cello2.mp3';
+Sound.setCategory('Playback');
+
+
+
+var bgsound = new Sound(cello, Sound.MAIN_BUNDLE, (error) => {
+  if (error) {
+    console.log('failed to load the sound', error);
+    return;
+  }
+  console.log('duration in seconds: ' + bgsound.getDuration() + 'number of channels: ' + bgsound.getNumberOfChannels());
+});
+
+var bgsound2 = new Sound(cello2, Sound.MAIN_BUNDLE, (error) => {
+  if (error) {
+    console.log('failed to load the sound', error);
+    return;
+  }
+  console.log('duration in seconds: ' + bgsound.getDuration() + 'number of channels: ' + bgsound.getNumberOfChannels());
+});
+
+bgsound.setNumberOfLoops(-1);
+bgsound.release(); 
+
+const clickHanlder= () =>
+{
+  bgsound2.play((success) => {
+    if (success) {
+      console.log('successfully finished playing');
+      bgsound2.setVolume(1);
+      bgsound.stop();
+    } else {
+      console.log('playback failed due to audio decoding errors');
+    }
+  });
+}
+
+
+
 class JRHomeScreen extends Component {
   componentDidMount() {
     BackHandler.addEventListener('hardwareBackPress', this.onBackPress);
@@ -30,6 +72,15 @@ class JRHomeScreen extends Component {
 
   render() {
     const {navigate} = this.props.navigation;
+    bgsound.setVolume(50);
+ 
+    bgsound.play((success) => {
+      if (success) {
+        console.log('successfully finished playing');
+      } else {
+        console.log('playback failed due to audio decoding errors');
+      }
+    });
 
     return (
       <ImageBackground
@@ -53,10 +104,10 @@ class JRHomeScreen extends Component {
           source={require('./assets/Rizal_Logo.gif')}></Image>
 
         <View style={styles.boxescolumn}>
-          <TouchableOpacity onPress={() => navigate('JRGameScreen')}>
+          <TouchableOpacity onPress={() => navigate('JRGameScreen') + clickHanlder()}>
             <Image
               style={styles.playButton}
-              source={require('./assets/play.png')}></Image>
+              source={require('./assets/play.png') }></Image>
           </TouchableOpacity>
 
           <TouchableOpacity onPress={() => navigate('JRInstructionScreen')}>
