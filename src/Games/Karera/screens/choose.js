@@ -9,6 +9,7 @@ import {
     TouchableOpacity,
     FlatList,
     BackHandler,
+    ImageBackground,
 } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Game from '../screens/Game';
@@ -25,8 +26,8 @@ export default class choose extends Component{
         BackHandler.removeEventListener('hardwareBackPress', this.onBackPress);
       }
     
-    onBackPress = () => {
-        {this.props.navigation.navigate('MainScreen')}
+      onBackPress = () => {
+        {this.props.navigation.navigate('MainScreen'); Orientation.lockToPortrait();}
         return true;
       }
 
@@ -43,11 +44,19 @@ export default class choose extends Component{
         let horse4 = 4;
         let horse5 = 5;
         return(
-            <View style={styles.container}>
-                <Image
-                    style={styles.chooseTitle}
-                    source={require('../PNG/title-choose.png')}>
-                </Image>
+            <View style = {styles.container}>
+
+            <TouchableOpacity onPress = {() => navigation.navigate('MainScreen')}>
+                <Image source={require('../PNG/k_back.png')} style={styles.buttonBack} />
+              </TouchableOpacity>
+            <ImageBackground  style={styles.backgroundImage} source={require('../PNG/k_bgChoose.png')}>
+            
+                    <Image
+                     style={styles.chooseTitle}
+                        source={require('../PNG/k_chooseTxt.png')}>
+                    </Image>
+
+
             <View style={styles.allHorses}>
                 <View style = {styles.horseRow}> 
                     <TouchableOpacity onPress = {() => this.props.navigation.navigate('Game', horse1)}>
@@ -70,15 +79,21 @@ export default class choose extends Component{
                     </TouchableOpacity>
                 </View>
             </View>
-            </View>
+         
+         </ImageBackground>
+         </View>
         );
     }
 }
 
 const styles = StyleSheet.create({
+    backgroundImage: {
+        flex: 1,
+        resizeMode: 'cover',
+      },
     container:{
         flex: 1,
-        backgroundColor: '#FDA50F',
+      backgroundColor: '#c9eaec'
     },
     allHorses: {
         flex: 1,
@@ -95,13 +110,26 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
     },
     horseStyle:{
-        padding: hp('4%'),
+        padding: hp('3%'),
     },
     chooseTitle:{
         resizeMode: 'contain',
         alignSelf: 'center',
-        height: hp('20%'),
-        marginTop: hp('-3%'),
-        marginBottom: hp('-12%')
+        height: hp('35%'),
+        marginTop: hp('-7%'),
+        marginBottom: hp('-20%')
     },
+
+    buttonBack: {
+        borderRadius: 2.5,
+        resizeMode: 'contain',
+        height: hp('20%'),
+        width: wp('40%'),
+        marginVertical: -55,
+        marginHorizontal: -60
+        
+
+      },
+
+
 })

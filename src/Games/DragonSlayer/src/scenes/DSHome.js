@@ -26,6 +26,10 @@ var bgsound2 = new Sound(dshs2, Sound.MAIN_BUNDLE, (error) => {
 bgsound.setNumberOfLoops(-1);
 bgsound.release();  
 
+const musicStop = () =>
+{
+  bgsound.stop();
+}
 const clickHanlder= () =>
 {
   bgsound2.play((success) => {
@@ -46,25 +50,19 @@ class DSHome extends Component {
     BackHandler.removeEventListener('hardwareBackPress', this.onBackPress);
   }
   onBackPress = () => {
-    {this.props.navigation.navigate('HomeScreen')}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+    {this.props.navigation.navigate('HomeScreen') + bgsound.stop();}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
     return true;
   }
 
   render() {
     const navigation = this.props.navigation;
     bgsound.setVolume(50);
- 
-    bgsound.play((success) => {
-      if (success) {
-        console.log('successfully finished playing');
-      } else {
-        console.log('playback failed due to audio decoding errors');
-      }
-    });
+    bgsound.setNumberOfLoops(20);
+    bgsound.play()
     return (
       <View style = {styles.container}>
     
-        <TouchableOpacity onPress = {() => navigation.navigate('HomeScreen')}>
+        <TouchableOpacity onPress = {() => navigation.navigate('HomeScreen') + musicStop()}>
                 <Image source={require('../images/BackBtnNew.png')} style={styles.buttonBack} />
               </TouchableOpacity>
               
