@@ -16,7 +16,7 @@ import {
 
 export default class JRInstructionScreen extends React.Component {
   render() {
-    const {navigation} = this.props.navigation;
+    const navigation = this.props.navigation;
     return (
       <ImageBackground
         style={styles.background}
@@ -26,7 +26,7 @@ export default class JRInstructionScreen extends React.Component {
           onPress={() => navigation.navigate('JRHomeScreen')}
           style={{alignSelf: 'flex-end'}}>
           <Image
-            source={require('./assets/button_back.png')}
+            source={require('./assets/button_close.png')}
             style={styles.exitButton}></Image>
         </TouchableOpacity>
 
@@ -168,8 +168,10 @@ const styles = StyleSheet.create({
     marginTop: hp('1%'),
   },
   exitButton: {
-    width: wp('40%'),
-    height: hp('10%'),
+    width: wp('20%'),
+    height: hp('8%'),
     resizeMode: 'contain',
+    
+
   },
 });
