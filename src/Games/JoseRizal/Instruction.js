@@ -16,109 +16,105 @@ import {
 
 export default class JRInstructionScreen extends React.Component {
   render() {
-    const {navigate} = this.props.navigation;
+    const {navigation} = this.props.navigation;
     return (
       <ImageBackground
         style={styles.background}
-        source={require('./assets/bplain.jpg')}>
-        <View>
-          {/* return ni rizal  di ko knows bat di gumagana ung button*/}
+        source={require('./assets/defaultbackground.jpg')}>
+        {/* Back button */}
+        <TouchableOpacity
+          onPress={() => navigation.navigate('JRHomeScreen')}
+          style={{alignSelf: 'flex-end'}}>
+          <Image
+            source={require('./assets/button_back.png')}
+            style={styles.exitButton}></Image>
+        </TouchableOpacity>
 
-          <View style={styles.bottomSpace}>
-            <TouchableOpacity
-              onPress={() => navigation.navigate('JRHomeScreen')}>
-              <Image
-                source={require('./assets/return.png')}
-                style={styles.exitButton}></Image>
-            </TouchableOpacity>
-          </View>
+        <ImageBackground
+          style={styles.logo}
+          source={require('./assets/how2.png')}></ImageBackground>
+        <Text style={styles.headerText}>
+          {' '}
+          1. Press any book and locate feather{' '}
+        </Text>
+        <Text style={styles.headerText2}> 2. Win Prizes: </Text>
+        <View style={styles.imageRow}>
+          <Image
+            style={styles.imageFeather}
+            source={require('./assets/feather.png')}></Image>
+          <Image
+            style={styles.imageFeather}
+            source={require('./assets/feather.png')}></Image>
+          <Image
+            style={styles.imageFeather}
+            source={require('./assets/feather.png')}></Image>
+          <Image
+            style={styles.imageFeather}
+            source={require('./assets/feather.png')}></Image>
+          <Image
+            style={styles.imageFeather}
+            source={require('./assets/feather.png')}></Image>
+          <Image
+            style={styles.imageFeather}
+            source={require('./assets/feather.png')}></Image>
+          <Text style={styles.headerText3}> 2000 Coins</Text>
+        </View>
+        <View style={styles.imageRow}>
+          <Image
+            style={styles.imageFeather}
+            source={require('./assets/feather.png')}></Image>
+          <Image
+            style={styles.imageFeather}
+            source={require('./assets/feather.png')}></Image>
+          <Image
+            style={styles.imageFeather}
+            source={require('./assets/feather.png')}></Image>
+          <Image
+            style={styles.imageFeather}
+            source={require('./assets/feather.png')}></Image>
+          <Image
+            style={styles.imageFeather}
+            source={require('./assets/feather.png')}></Image>
+          <Text style={styles.headerText3}> 1000 Coins</Text>
+        </View>
+        <View style={styles.imageRow}>
+          <Image
+            style={styles.imageFeather}
+            source={require('./assets/feather.png')}></Image>
+          <Image
+            style={styles.imageFeather}
+            source={require('./assets/feather.png')}></Image>
+          <Image
+            style={styles.imageFeather}
+            source={require('./assets/feather.png')}></Image>
+          <Image
+            style={styles.imageFeather}
+            source={require('./assets/feather.png')}></Image>
 
-          <ImageBackground
-            style={styles.logo}
-            source={require('./assets/how2.png')}></ImageBackground>
-          <Text style={styles.headerText}>
-            {' '}
-            1. Press any book and locate feather{' '}
-          </Text>
-          <Text style={styles.headerText2}> 2. Win Prizes: </Text>
-          <View style={styles.imageRow}>
-            <Image
-              style={styles.imageFeather}
-              source={require('./assets/feather.png')}></Image>
-            <Image
-              style={styles.imageFeather}
-              source={require('./assets/feather.png')}></Image>
-            <Image
-              style={styles.imageFeather}
-              source={require('./assets/feather.png')}></Image>
-            <Image
-              style={styles.imageFeather}
-              source={require('./assets/feather.png')}></Image>
-            <Image
-              style={styles.imageFeather}
-              source={require('./assets/feather.png')}></Image>
-            <Image
-              style={styles.imageFeather}
-              source={require('./assets/feather.png')}></Image>
-            <Text style={styles.headerText3}> 2000 Coins</Text>
-          </View>
-          <View style={styles.imageRow}>
-            <Image
-              style={styles.imageFeather}
-              source={require('./assets/feather.png')}></Image>
-            <Image
-              style={styles.imageFeather}
-              source={require('./assets/feather.png')}></Image>
-            <Image
-              style={styles.imageFeather}
-              source={require('./assets/feather.png')}></Image>
-            <Image
-              style={styles.imageFeather}
-              source={require('./assets/feather.png')}></Image>
-            <Image
-              style={styles.imageFeather}
-              source={require('./assets/feather.png')}></Image>
-            <Text style={styles.headerText3}> 1000 Coins</Text>
-          </View>
-          <View style={styles.imageRow}>
-            <Image
-              style={styles.imageFeather}
-              source={require('./assets/feather.png')}></Image>
-            <Image
-              style={styles.imageFeather}
-              source={require('./assets/feather.png')}></Image>
-            <Image
-              style={styles.imageFeather}
-              source={require('./assets/feather.png')}></Image>
-            <Image
-              style={styles.imageFeather}
-              source={require('./assets/feather.png')}></Image>
+          <Text style={styles.headerText3}> 500 Coins</Text>
+        </View>
+        <View style={styles.imageRow}>
+          <Image
+            style={styles.imageFeather}
+            source={require('./assets/feather.png')}></Image>
+          <Image
+            style={styles.imageFeather}
+            source={require('./assets/feather.png')}></Image>
+          <Image
+            style={styles.imageFeather}
+            source={require('./assets/feather.png')}></Image>
 
-            <Text style={styles.headerText3}> 500 Coins</Text>
-          </View>
-          <View style={styles.imageRow}>
-            <Image
-              style={styles.imageFeather}
-              source={require('./assets/feather.png')}></Image>
-            <Image
-              style={styles.imageFeather}
-              source={require('./assets/feather.png')}></Image>
-            <Image
-              style={styles.imageFeather}
-              source={require('./assets/feather.png')}></Image>
+          <Text style={styles.headerText3}> 200 Coins</Text>
+        </View>
 
-            <Text style={styles.headerText3}> 200 Coins</Text>
-          </View>
-
-          <View style={styles.imageRow}>
-            <Image
-              style={styles.imageFeather}
-              source={require('./assets/feather.png')}></Image>
-            <Image
-              style={styles.imageFeather}
-              source={require('./assets/feather.png')}></Image>
-            <Text style={styles.headerText3}> 20 Coins</Text>
-          </View>
+        <View style={styles.imageRow}>
+          <Image
+            style={styles.imageFeather}
+            source={require('./assets/feather.png')}></Image>
+          <Image
+            style={styles.imageFeather}
+            source={require('./assets/feather.png')}></Image>
+          <Text style={styles.headerText3}> 20 Coins</Text>
         </View>
       </ImageBackground>
     );

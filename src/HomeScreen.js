@@ -73,7 +73,7 @@ class HomeScreen extends Component {
               </View>
               <View style={styles.boxesSpace}>
                 <TouchableOpacity
-                  onPress={() => navigation.navigate('JRHomeScreen')}>
+                  onPress={() => navigation.navigate('JRLoadingScreen')}>
                   <Image
                     source={require('./images/RizalIcon.png')}
                     style={styles.buttonImage}

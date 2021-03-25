@@ -15,46 +15,30 @@ import {
 } from 'react-native-responsive-screen';
 
 import Sound from 'react-native-sound';
-import { isWhiteSpaceLike } from 'typescript'; 
-import cello from './assets/sounds/cello.mp3';
-import cello2 from './assets/sounds/cello2.mp3';
+import {isWhiteSpaceLike} from 'typescript';
+import bgmusic_homescreen from './assets/sounds/bg_homescreen.mp3';
+
 Sound.setCategory('Playback');
 
-
-
-var bgsound = new Sound(cello, Sound.MAIN_BUNDLE, (error) => {
+var bgsound = new Sound(bgmusic_homescreen, Sound.MAIN_BUNDLE, (error) => {
   if (error) {
     console.log('failed to load the sound', error);
     return;
   }
-  console.log('duration in seconds: ' + bgsound.getDuration() + 'number of channels: ' + bgsound.getNumberOfChannels());
+  console.log(
+    'duration in seconds: ' +
+      bgsound.getDuration() +
+      'number of channels: ' +
+      bgsound.getNumberOfChannels(),
+  );
 });
 
-var bgsound2 = new Sound(cello2, Sound.MAIN_BUNDLE, (error) => {
-  if (error) {
-    console.log('failed to load the sound', error);
-    return;
-  }
-  console.log('duration in seconds: ' + bgsound.getDuration() + 'number of channels: ' + bgsound.getNumberOfChannels());
-});
+const musicStop = () => {
+  bgsound.stop();
+};
 
 bgsound.setNumberOfLoops(-1);
-bgsound.release(); 
-
-const clickHanlder= () =>
-{
-  bgsound2.play((success) => {
-    if (success) {
-      console.log('successfully finished playing');
-      bgsound2.setVolume(1);
-      bgsound.stop();
-    } else {
-      console.log('playback failed due to audio decoding errors');
-    }
-  });
-}
-
-
+bgsound.release();
 
 class JRHomeScreen extends Component {
   componentDidMount() {
@@ -66,14 +50,15 @@ class JRHomeScreen extends Component {
   onBackPress = () => {
     {
       this.props.navigation.navigate('HomeScreen');
+      musicStop();
     }
     return true;
   };
 
   render() {
-    const {navigate} = this.props.navigation;
+    const navigation = this.props.navigation;
     bgsound.setVolume(50);
- 
+
     bgsound.play((success) => {
       if (success) {
         console.log('successfully finished playing');
@@ -83,40 +68,55 @@ class JRHomeScreen extends Component {
     });
 
     return (
-      <ImageBackground
-        style={styles.background}
-        resizeMode="cover"
-        source={require('./assets/bplain.jpg')}>
-        {/* quitbutton ni rizal */}
+      <View style={styles.container}>
+        <ImageBackground
+          source={require('./assets/defaultbackground.jpg')}
+          style={styles.backgroundImage}>
+          {/* Back/Quit Button */}
 
-        {/* sample ni nash */}
-        <TouchableOpacity
-          onPress={() => navigate('HomeScreen')}
-          style={styles.button_back}>
-          <Image
-            source={require('./assets/backbuttonTEST.png')}
-            style={styles.logoback}
-          />
-        </TouchableOpacity>
-
-        <Image
-          style={styles.logo}
-          source={require('./assets/Rizal_Logo.gif')}></Image>
-
-        <View style={styles.boxescolumn}>
-          <TouchableOpacity onPress={() => navigate('JRGameScreen') + clickHanlder()}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('HomeScreen') + musicStop()}
+            style={styles.button_back}>
             <Image
-              style={styles.playButton}
-              source={require('./assets/play.png') }></Image>
+              source={require('./assets/button_back.png')}
+              style={styles.icon_back}
+            />
           </TouchableOpacity>
-
-          <TouchableOpacity onPress={() => navigate('JRInstructionScreen')}>
+          <View
+            style={{
+              marginTop: hp('12%'),
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}>
+            {/* Rizal's Quills Logo */}
             <Image
-              style={styles.howButton}
-              source={require('./assets/how.png')}></Image>
+              style={styles.logo_pearldiver}
+              source={require('./assets/Rizal_Logo.gif')}
+            />
+          </View>
+          <View style={styles.container_playbutton}>
+            {/* Play Button */}
+            <TouchableOpacity
+              onPress={() => navigation.navigate('JRGameScreen') + musicStop()}
+              style={styles.button_play}>
+              <Image
+                source={require('./assets/button_play.png')}
+                style={styles.image_playbutton}
+              />
+            </TouchableOpacity>
+          </View>
+
+          {/* How to Play Button */}
+          <TouchableOpacity
+            onPress={() => navigation.navigate('JRInstructionScreen')}
+            style={styles.button_howtoplay}>
+            <Image
+              source={require('./assets/button_howtoplay.png')}
+              style={styles.image_howtoplay}
+            />
           </TouchableOpacity>
-        </View>
-      </ImageBackground>
+        </ImageBackground>
+      </View>
     );
   }
 }
@@ -124,45 +124,64 @@ class JRHomeScreen extends Component {
 export default JRHomeScreen;
 
 const styles = StyleSheet.create({
-  background: {
+  container: {
     flex: 1,
-  },
-  logo: {
-    width: wp('100%'),
-    height: hp('55%'),
-    marginTop: hp('2%'),
-    alignSelf: 'center',
-  },
-  boxescolumn: {
-    flexDirection: 'column',
-    marginTop: hp('2%'),
-  },
-
-  button_back: {
-    height: hp('4%'),
-    width: wp('10%'),
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 10,
-    marginLeft: 10,
+    padding: 10,
+  },
+  backgroundImage: {
+    height: hp('100%'),
+    width: wp('100%'),
   },
 
-  logoback: {
+  logo_pearldiver: {
+    height: hp('40%'),
+    width: wp('80%'),
+    resizeMode: 'cover',
+  },
+
+  //Test message
+  button_back: {
+    height: hp('8%'),
+    width: hp('9%'),
+    resizeMode: 'contain',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+
+  icon_back: {width: wp('12%'), resizeMode: 'contain'},
+
+  container_playbutton: {
+    justifyContent: 'center',
+    alignItems: 'center',
     width: wp('50%'),
+    height: hp('10%'),
+    marginRight: 15,
+    alignSelf: 'center',
+    marginTop: 50,
+  },
+
+  button_play: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+
+  image_playbutton: {
+    height: hp('25%'),
+    width: wp('70%'),
     resizeMode: 'contain',
   },
 
-  playButton: {
-    width: wp('50%'),
-    height: hp('15%'),
-    marginLeft: hp('0.1%'),
-    resizeMode: 'contain',
-    alignSelf: 'center',
+  button_howtoplay: {
+    marginTop: 90,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
-  howButton: {
+
+  image_howtoplay: {
+    height: hp('10%'),
     width: wp('50%'),
-    height: hp('15%'),
-    resizeMode: 'contain',
-    alignSelf: 'center',
+    resizeMode: 'cover',
   },
 });

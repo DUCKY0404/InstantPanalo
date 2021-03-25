@@ -1,15 +1,11 @@
 import React, {Component} from 'react';
+import {ImageBackground, View, Image, StyleSheet, Animated} from 'react-native';
 import {
-  ImageBackground,
-  View,
-  Image,
-  StyleSheet,
-  Animated,
-} from 'react-native';
-import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 
-
-class DSLoadingScene extends Component {
+class DSPlayAnimation extends Component {
   state = {
     LogoAnimate: new Animated.Value(0),
     LogoText: new Animated.Value(0),
@@ -18,31 +14,35 @@ class DSLoadingScene extends Component {
   componentDidMount() {
     const {LogoAnimate, LogoText} = this.state;
     const navigation = this.props.navigation;
-    Animated.parallel([
-
-    ]).start(() => {
+    Animated.parallel([]).start(() => {
       setTimeout(() => navigation.navigate('DSPlayGame'), 2000);
     });
   }
 
   render() {
     return (
-      <ImageBackground source={require("../images/bgPlayAnim.png")} blurRadius={1} style={styles.backgroundImage}>
-      <View style={styles.container}>
-      <Image style={styles.dragonlogo} source={require("../images/FireBurst.gif")} />
-      </View>
+      <ImageBackground
+        source={require('../images/bgPlayAnim.png')}
+        blurRadius={1}
+        style={styles.backgroundImage}>
+        <View style={styles.container}>
+          <Image
+            style={styles.dragonlogo}
+            source={require('../images/FireBurst.gif')}
+          />
+        </View>
       </ImageBackground>
     );
   }
 }
 
-export default DSLoadingScene;
+export default DSPlayAnimation;
 
 const styles = StyleSheet.create({
   backgroundImage: {
     flex: 1,
     resizeMode: 'cover',
-    height: '100%'
+    height: '100%',
   },
   container: {
     flex: 1,
@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   dragonlogo: {
-    marginTop:hp('10%'),
+    marginTop: hp('10%'),
     height: hp('100%'),
     width: hp('100%'),
     resizeMode: 'contain',

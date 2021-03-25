@@ -28,6 +28,8 @@ import JRHomeScreen from './src/Games/JoseRizal/HomeScreen';
 import JRGameScreen from './src/Games/JoseRizal/GameScreen';
 import JRInstructionScreen from './src/Games/JoseRizal/Instruction';
 import PDLoadingScreen from './src/Games/PearlDiver/screen/PDLoadingScreen';
+import JRLoadingScreen from './src/Games/JoseRizal/LoadingScreen';
+import DSPlayAnimation from './src/Games/DragonSlayer/src/scenes/DSPlayAnimation';
 
 const Stack = createStackNavigator();
 
@@ -48,6 +50,7 @@ class App extends Component {
           <Stack.Screen name="DSHome" component={DSHome} />
           <Stack.Screen name="DSPlayGame" component={DSPlayGame} />
           <Stack.Screen name="DSHowToPlay" component={DSHowToPlay} />
+          <Stack.Screen name="DSPlayAnimation" component={DSPlayAnimation} />
 
           {/* KARERA ROUTER*/}
 
@@ -73,7 +76,7 @@ class App extends Component {
           />
 
           {/* JOSE RIZAL ROUTER*/}
-
+          <Stack.Screen name="JRLoadingScreen" component={JRLoadingScreen} />
           <Stack.Screen name="JRHomeScreen" component={JRHomeScreen} />
           <Stack.Screen name="JRGameScreen" component={JRGameScreen} />
           <Stack.Screen
