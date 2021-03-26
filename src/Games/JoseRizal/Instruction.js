@@ -125,7 +125,7 @@ const styles = StyleSheet.create({
   logo: {
     width: wp('100%'),
     height: hp('78%'),
-    marginTop: hp('7%'),
+    marginTop: hp('-1%'),
     alignSelf: 'center',
     resizeMode: 'contain',
   },
