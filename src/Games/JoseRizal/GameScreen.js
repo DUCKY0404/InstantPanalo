@@ -7,6 +7,7 @@ import {
   Image,
   TouchableOpacity,
   Modal,
+  BackHandler,
   Button,
 } from 'react-native';
 import {
@@ -14,7 +15,43 @@ import {
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 
+import bgmusic_loading from './assets/sounds/bgmusic_gamescreen.mp3';
+import Sound from 'react-native-sound';
+
+var bgsound = new Sound(bgmusic_loading, Sound.MAIN_BUNDLE, (error) => {
+  if (error) {
+    console.log('failed to load the sound', error);
+    return;
+  }
+  console.log(
+    'duration in seconds: ' +
+      bgsound.getDuration() +
+      'number of channels: ' +
+      bgsound.getNumberOfChannels(),
+  );
+});
+
+const musicStop = () => {
+  bgsound.stop();
+};
+
+bgsound.setNumberOfLoops(-1);
+bgsound.release();
+
 export default class JRGameScreen extends React.Component {
+  componentDidMount() {
+    BackHandler.addEventListener('hardwareBackPress', this.onBackPress);
+  }
+  componentWillUnmount() {
+    BackHandler.removeEventListener('hardwareBackPress', this.onBackPress);
+  }
+  onBackPress = () => {
+    {
+      this.props.navigation.navigate('JRHomeScreen');
+      musicStop();
+    }
+    return true;
+  };
   constructor() {
     super();
     this.state = {
@@ -255,6 +292,15 @@ export default class JRGameScreen extends React.Component {
 
   // -------------------------------------------------------------------------------
   render() {
+    bgsound.setVolume(50);
+
+    bgsound.play((success) => {
+      if (success) {
+        console.log('successfully finished playing');
+      } else {
+        console.log('playback failed due to audio decoding errors');
+      }
+    });
     const {navigate} = this.props.navigation;
     let totalPoints = 0;
     if (this.state.featherCount == 6) {
@@ -274,11 +320,22 @@ export default class JRGameScreen extends React.Component {
       <ImageBackground
         source={require('./assets/bgred.jpg')}
         style={styles.backgroundImage}>
-        <View style={styles.topRightScore}>
-          <Image
-            style={styles.coinImage}
-            source={require('./assets/coin1.gif')}></Image>
-          <Text style={styles.topRightScoreText}> {this.state.coins} </Text>
+        <View style={styles.topContainer}>
+          {/* Back button */}
+          <TouchableOpacity
+            onPress={() => navigate('JRHomeScreen') + musicStop()}>
+            <Image
+              source={require('./assets/button_back.png')}
+              style={styles.backIcon}
+            />
+          </TouchableOpacity>
+          <View style={styles.score}>
+            {/* Coin GIF and Score */}
+            <Image
+              style={styles.coinImage}
+              source={require('./assets/coin1.gif')}></Image>
+            <Text style={styles.topRightScoreText}> {this.state.coins} </Text>
+          </View>
         </View>
 
         <View style={styles.container}>
@@ -424,18 +481,10 @@ const styles = StyleSheet.create({
     height: hp('8%'),
     resizeMode: 'contain',
   },
-  topText: {
-    textAlign: 'center',
-    fontFamily: 'Back to Black Demo',
-    color: 'black',
-    marginTop: hp('25%'),
-    marginBottom: hp('7%'),
-    fontSize: hp('5%'),
-  },
-  topRightScore: {
-    justifyContent: 'flex-end',
+
+  topContainer: {
+    justifyContent: 'space-between',
     flexDirection: 'row',
-    paddingHorizontal: hp('1%'),
   },
   topRightScoreText: {
     fontSize: hp('3%'),
@@ -443,8 +492,21 @@ const styles = StyleSheet.create({
     color: 'white',
   },
   coinImage: {
-    marginTop: hp('0.7%'),
+    marginTop: 2,
     width: wp('5%'),
     height: hp('3%'),
+  },
+
+  score: {
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+  },
+
+  backIcon: {
+    height: hp('8%'),
+    width: hp('9%'),
+    resizeMode: 'contain',
+    marginTop: hp('1%'),
   },
 });

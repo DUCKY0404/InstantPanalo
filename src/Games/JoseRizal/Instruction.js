@@ -6,6 +6,7 @@ import {
   Button,
   ImageBackground,
   TouchableOpacity,
+  BackHandler,
   Image,
 } from 'react-native';
 import {Directions} from 'react-native-gesture-handler';
@@ -15,6 +16,18 @@ import {
 } from 'react-native-responsive-screen';
 
 export default class JRInstructionScreen extends React.Component {
+  componentDidMount() {
+    BackHandler.addEventListener('hardwareBackPress', this.onBackPress);
+  }
+  componentWillUnmount() {
+    BackHandler.removeEventListener('hardwareBackPress', this.onBackPress);
+  }
+  onBackPress = () => {
+    {
+      this.props.navigation.navigate('JRHomeScreen');
+    }
+    return true;
+  };
   render() {
     const navigation = this.props.navigation;
     return (
@@ -171,7 +184,5 @@ const styles = StyleSheet.create({
     width: wp('20%'),
     height: hp('8%'),
     resizeMode: 'contain',
-    
-
   },
 });

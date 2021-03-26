@@ -29,7 +29,7 @@ class JRLoadingScreen extends Component {
       const {navigate} = this.props.navigation;
 
       navigate('JRHomeScreen');
-    }, 5000);
+    }, 3000);
   }
 
   render() {
@@ -69,9 +69,9 @@ const styles = StyleSheet.create({
   },
 
   image_rizal: {
-    width: 350,
-    height: 350,
-    justifyContent: 'center',
+    width: 380,
+    height: 420,
+    resizeMode: 'contain',
   },
 
   text_loading: {
