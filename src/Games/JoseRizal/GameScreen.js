@@ -356,7 +356,8 @@ export default class JRGameScreen extends React.Component {
                         style={styles.exitButton}></Image>
                     </TouchableOpacity>
 
-                    <TouchableOpacity onPress={() => navigate('JRHomeScreen')}>
+                    <TouchableOpacity
+                      onPress={() => navigate('JRHomeScreen') + musicStop()}>
                       <Image
                         source={require('./assets/menu.png')}
                         style={styles.exitButton}></Image>
@@ -508,5 +509,12 @@ const styles = StyleSheet.create({
     width: hp('9%'),
     resizeMode: 'contain',
     marginTop: hp('1%'),
+  },
+
+  topText: {
+    textAlign: 'center',
+    marginTop: 200,
+    fontSize: hp('3%'),
+    fontWeight: 'bold',
   },
 });
