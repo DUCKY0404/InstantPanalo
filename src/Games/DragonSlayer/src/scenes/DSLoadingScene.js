@@ -60,8 +60,7 @@ class DSLoadingScene extends Component {
   }
 
   render() {
-    bgsound.setVolume(50);
-
+    bgsound.setVolume(1);
     bgsound.play((success) => {
       if (success) {
         console.log('successfully finished playing');
