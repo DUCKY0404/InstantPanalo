@@ -10,6 +10,8 @@ target 'InstantPanalo' do
 
   pod 'RNSound', :path => '../node_modules/react-native-sound'
 
+  pod 'react-native-blur', :path => '../node_modules/@react-native-community/blur'
+
   target 'InstantPanaloTests' do
     inherit! :complete
     # Pods for testing

@@ -1,35 +1,43 @@
 import React, {Component} from 'react';
-import {View, Text} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import Orientation from 'react-native-orientation-locker';
 import StartScreen from './src/StartScreen';
 import HomeScreen from './src/HomeScreen';
 
-import DSLoadingScene from './src/Games/DragonSlayer/src/scenes/DSLoadingScene';
-import DSHome from './src/Games/DragonSlayer/src/scenes/DSHome';
-import DSPlayGame from './src/Games/DragonSlayer/src/scenes/DSPlayGame';
-import DSHowToPlay from './src/Games/DragonSlayer/src/scenes/DSHowToPlay';
+// Dragon Slayer Imports
+import DS_LoadingScreen from './src/Games/DragonSlayer/Screens/DragonSlayer_Loadingscreen';
+import DS_Homescreen from './src/Games/DragonSlayer/Screens/DragonSlayer_Homescreen';
+import DS_GameplayTransition from './src/Games/DragonSlayer/Screens/DragonSlayer_GameplayTransition';
+import DS_Tutorial from './src/Games/DragonSlayer/Screens/DragonSlayer_Tutorial';
+import DS_Gameplay from './src/Games/DragonSlayer/Screens/DragonSlayer_Gameplay';
 
-import MainScreen from './src/Games/Karera/screens/MainScreen';
-import Game from './src/Games/Karera/screens/Game';
-import choose from './src/Games/Karera/screens/choose';
-import How from './src/Games/Karera/screens/How';
+// Karera Imports
+import KR_Homescreen from './src/Games/Karera/Screens/Karera_Homescreen';
+import KR_Gameplay from './src/Games/Karera/Screens/Karera_Gameplay';
+import KR_Selection from './src/Games/Karera/Screens/Karera_Selection';
+import KR_Tutorial from './src/Games/Karera/Screens/Karera_Tutorial';
+import KR_GameplayTransition from './src/Games/Karera/Screens/Karera_GameplayTransition';
+import KR_LoadingScreen from './src/Games/Karera/Screens/Karera_Loadingscreen';
 
+// Pearl Diver Imports
 import PDHomeScreen from './src/Games/PearlDiver/screen/homescreen';
 import PDHowToPlay from './src/Games/PearlDiver/screen/howtoplay';
 import PDGamex from './src/Games/PearlDiver/screen/play';
 
-import UFHomeScreen from './src/Games/UlamFinder/pages/HomeScreen';
-import UFGameScreen from './src/Games/UlamFinder/pages/GameScreen';
-import UFInstructionScreen from './src/Games/UlamFinder/pages/Instruction';
+// Ulam Finder Imports
+import UF_HomeScreen from './src/Games/UlamFinder/Screens/UFinder_Homescreen';
+import UF_Gameplay from './src/Games/UlamFinder/Screens/UFinder_Gameplay';
+import UF_Tutorial from './src/Games/UlamFinder/Screens/UFinder_Tutorial';
+import UF_GameplayTransition from './src/Games/UlamFinder/Screens/UFinder_GameplayTransition';
+import UF_LoadingScreen from './src/Games/UlamFinder/Screens/UFinder_LoadingScreen';
 
+// Jose Rizal Imports
 import JRHomeScreen from './src/Games/JoseRizal/HomeScreen';
 import JRGameScreen from './src/Games/JoseRizal/GameScreen';
 import JRInstructionScreen from './src/Games/JoseRizal/Instruction';
 import PDLoadingScreen from './src/Games/PearlDiver/screen/PDLoadingScreen';
 import JRLoadingScreen from './src/Games/JoseRizal/LoadingScreen';
-import DSPlayAnimation from './src/Games/DragonSlayer/src/scenes/DSPlayAnimation';
 
 const Stack = createStackNavigator();
 
@@ -45,19 +53,26 @@ class App extends Component {
           <Stack.Screen name="HomeScreen" component={HomeScreen} />
 
           {/* DRAGON SLAYER ROUTER*/}
-
-          <Stack.Screen name="DSLoadingScene" component={DSLoadingScene} />
-          <Stack.Screen name="DSHome" component={DSHome} />
-          <Stack.Screen name="DSPlayGame" component={DSPlayGame} />
-          <Stack.Screen name="DSHowToPlay" component={DSHowToPlay} />
-          <Stack.Screen name="DSPlayAnimation" component={DSPlayAnimation} />
+          <Stack.Screen name="DS_LoadingScreen" component={DS_LoadingScreen} />
+          <Stack.Screen name="DS_Homescreen" component={DS_Homescreen} />
+          <Stack.Screen name="DS_Tutorial" component={DS_Tutorial} />
+          <Stack.Screen name="DS_Gameplay" component={DS_Gameplay} />
+          <Stack.Screen
+            name="DS_GameplayTransition"
+            component={DS_GameplayTransition}
+          />
 
           {/* KARERA ROUTER*/}
 
-          <Stack.Screen name="MainScreen" component={MainScreen} />
-          <Stack.Screen name="Game" component={Game} />
-          <Stack.Screen name="choose" component={choose} />
-          <Stack.Screen name="How" component={How} />
+          <Stack.Screen name="KR_HomeScreen" component={KR_Homescreen} />
+          <Stack.Screen name="KR_Gameplay" component={KR_Gameplay} />
+          <Stack.Screen
+            name="KR_GameplayTransition"
+            component={KR_GameplayTransition}
+          />
+          <Stack.Screen name="KR_Selection" component={KR_Selection} />
+          <Stack.Screen name="KR_Tutorial" component={KR_Tutorial} />
+          <Stack.Screen name="KR_LoadingScreen" component={KR_LoadingScreen} />
 
           {/* PEARL DIVER ROUTER*/}
 
@@ -68,11 +83,13 @@ class App extends Component {
 
           {/* ULAM FINDER ROUTER*/}
 
-          <Stack.Screen name="UFHomeScreen" component={UFHomeScreen} />
-          <Stack.Screen name="UFGameScreen" component={UFGameScreen} />
+          <Stack.Screen name="UF_HomeScreen" component={UF_HomeScreen} />
+          <Stack.Screen name="UF_Gameplay" component={UF_Gameplay} />
+          <Stack.Screen name="UF_Tutorial" component={UF_Tutorial} />
+          <Stack.Screen name="UF_LoadingScreen" component={UF_LoadingScreen} />
           <Stack.Screen
-            name="UFInstructionScreen"
-            component={UFInstructionScreen}
+            name="UF_GameplayTransition"
+            component={UF_GameplayTransition}
           />
 
           {/* JOSE RIZAL ROUTER*/}

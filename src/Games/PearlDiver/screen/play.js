@@ -262,10 +262,9 @@ export default class PDGamex extends React.Component {
         source={require('../src/bg1.png')}
         style={styles.backgroundImage}>
         <View style={styles.topContainer}>
-          {/* Back button */}
           <TouchableOpacity onPress={() => navigate('PDHomeScreen')}>
             <Image
-              source={require('../src/PearlDiverAssets-BackButton.png')}
+              source={require('../src/PearlDiverAssets-BackButton.png')} 
               style={styles.backIcon}
             />
           </TouchableOpacity>
@@ -443,6 +442,7 @@ const styles = StyleSheet.create({
   topContainer: {
     justifyContent: 'space-between',
     flexDirection: 'row',
+    paddingHorizontal: wp('1%'),
   },
   topRightScoreText: {
     fontSize: hp('3%'),
@@ -462,8 +462,8 @@ const styles = StyleSheet.create({
   },
 
   backIcon: {
-    height: hp('8%'),
-    width: hp('9%'),
+    height: hp('7%'),
+    width: hp('20%'),
     resizeMode: 'contain',
   },
 });

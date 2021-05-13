@@ -4,6 +4,20 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
+import Sound from 'react-native-sound';
+import pdls from '../audio/pdls.mp3';
+Sound.setCategory('Playback');
+
+var bgsound = new Sound(pdls, Sound.MAIN_BUNDLE, (error) => {
+  if (error) {
+    console.log('failed to load the sound', error);
+    return;
+  }
+  console.log('duration in seconds: ' + bgsound.getDuration() + 'number of channels: ' + bgsound.getNumberOfChannels());
+});
+bgsound.setNumberOfLoops(-1);
+
+
 
 class PDLoadingScreen extends Component {
   componentDidMount() {
@@ -15,6 +29,16 @@ class PDLoadingScreen extends Component {
   }
 
   render() {
+
+    bgsound.setVolume(50);
+ 
+    bgsound.play((success) => {
+      if (success) {
+        console.log('successfully finished playing');
+      } else {
+        console.log('playback failed due to audio decoding errors');
+      }
+    });
     return (
       <ImageBackground
         blurRadius={Platform.OS == 'ios' ? 5 : 1}

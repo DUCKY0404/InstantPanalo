@@ -35,7 +35,7 @@ class HomeScreen extends Component {
             <View style={styles.boxesRow}>
               <View style={styles.boxesSpace}>
                 <TouchableOpacity
-                  onPress={() => navigation.navigate('DSLoadingScene')}>
+                  onPress={() => navigation.navigate('DS_LoadingScreen')}>
                   <Image
                     source={require('./images/DragonSlayerIcon.png')}
                     style={styles.buttonImage}
@@ -44,7 +44,7 @@ class HomeScreen extends Component {
               </View>
               <View style={styles.boxesSpace}>
                 <TouchableOpacity
-                  onPress={() => navigation.navigate('MainScreen')}>
+                  onPress={() => navigation.navigate('KR_LoadingScreen')}>
                   <Image
                     source={require('./images/KareraIcon.png')}
                     style={styles.buttonImage}
@@ -64,7 +64,7 @@ class HomeScreen extends Component {
             <View style={styles.boxesRow}>
               <View style={styles.boxesSpace}>
                 <TouchableOpacity
-                  onPress={() => navigation.navigate('UFHomeScreen')}>
+                  onPress={() => navigation.navigate('UF_LoadingScreen')}>
                   <Image
                     source={require('./images/UlamFinderIcon.png')}
                     style={styles.buttonImage}
